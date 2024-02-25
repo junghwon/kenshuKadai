@@ -3,7 +3,8 @@
 
 typedef struct _view view_t;
 
-typedef void (*funcMenuDisplay)(view_t *this);
-typedef void (*funcSelectDisplay)(view_t *this, int Number);
+typedef void (*funcMenuDisplay)(void);
+typedef void (*funcSelectDisplay)(int number);
+typedef void (*funcInsertDisplay)(void);
 
 #endif // VIEW_H

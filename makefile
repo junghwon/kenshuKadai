@@ -1,6 +1,7 @@
 SRC = 	main.c \
 		controller.c	\
 		keyController.c	\
+		model.c	\
 		view.c	\
 
 OBJ = $(SRC:%.c=%.o)

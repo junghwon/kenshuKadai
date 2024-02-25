@@ -4,12 +4,9 @@
 #include "keyController.h"
 
 struct _keyController {
-    char keyCode;
-    char keyCodeBuff;
-    int scaned;
+    int inputValue;
 
     funcScanKey scanKey;
-    funcAsciiToVinaly asciiToVinaly;
 };
 
 void keyController_Constructor (keyController_t *this);

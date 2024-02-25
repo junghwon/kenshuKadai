@@ -3,6 +3,7 @@
 
 #include "controller.h"
 #include "keyControllerClass.h"
+#include "modelClass.h"
 #include "viewClass.h"
 
 typedef enum {
@@ -25,6 +26,7 @@ struct _controller {
     funcControllerManager controllerManager;
     // composition
     keyController_t keyController;
+    model_t model;
     view_t view;
 };
 

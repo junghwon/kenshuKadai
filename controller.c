@@ -11,8 +11,10 @@ static void modeTransition (controllerMode_t *mode, int selectNo)
         default:
         break;
         case 1:
+            *mode = controllerMode_view;
         break;
         case 2:
+            *mode = controllerMode_insert;
         break;
         case 3:
         break;
@@ -22,29 +24,31 @@ static void modeTransition (controllerMode_t *mode, int selectNo)
     }
 }
 
-static void menuManager (controller_t *this)
+static void menuMode (controller_t *this)
 {
-    static subMode_t subMode = subMode_1;
-    int selectNo = 0;
+    this->view.menuDisplay ();
 
-    switch (subMode) {
-        default:
-        case subMode_1:
-            subMode = subMode_2;
-            this->view.menuDisplay (&this->view);
-        break;
-        case subMode_2:
-            if (this->keyController.scaned) {
-                subMode = subMode_1;
-                selectNo = this->keyController.asciiToVinaly (&this->keyController);
-                this->view.selectDisplay (&this->view, selectNo);
-                modeTransition (&this->controllerMode, selectNo);
-            }
-        break;
+    if (this->keyController.scanKey (&this->keyController)) {
+        modeTransition (&this->controllerMode, this->keyController.inputValue);
     }
 }
 
-static void quitManager (void)
+static void viewMode (controller_t *this)
+{
+    this->controllerMode = controllerMode_menu;
+}
+
+static void insertMode (controller_t *this)
+{
+    this->view.insertDisplay ();
+
+    if (this->keyController.scanKey (&this->keyController)) {
+        this->controllerMode = controllerMode_menu;
+        this->model.createNode (&this->model);
+    }
+}
+
+static void quitMode (void)
 {
     exit (0);
 }
@@ -55,16 +59,18 @@ static void controllerManager (controller_t *this)
     switch (this->controllerMode) {
         default:
         case controllerMode_menu:
-            menuManager (this);
+            menuMode (this);
         break;
         case controllerMode_view:
+            viewMode (this);
         break;
         case controllerMode_insert:
+            insertMode (this);
         break;
         case controllerMode_delete:
         break;
         case controllerMode_quit:
-            quitManager ();
+            quitMode ();
         break;
     }
 }
@@ -76,5 +82,6 @@ void controller_Constructor (controller_t *this)
     this->controllerManager = &controllerManager;
 
     keyController_Constructor (&this->keyController);
+    model_Constructor (&this->model);
     view_Constructor (&this->view);
 }

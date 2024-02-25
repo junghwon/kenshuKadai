@@ -6,35 +6,15 @@
 #include "keyControllerClass.h"
 
 // --- method
-static void scanKey (keyController_t *this)
+static int scanKey (keyController_t *this)
 {
-    this->keyCodeBuff = getchar();
-    if (this->keyCodeBuff != '\n') {
-        this->scaned = true;
-        this->keyCode = this->keyCodeBuff;
-    } else {
-        this->scaned = false;
-    }
-}
-
-static int asciiToVinaly (keyController_t *this)
-{
-    int rsp = 0;
-
-    if (this->keyCode >= 0x30) {
-        rsp = this->keyCode - 0x30;
-    }
-    
-    return (rsp);
+    scanf ("%d", &this->inputValue);
+    return (1);
 }
 
 // --- groval function
 void keyController_Constructor (keyController_t *this)
 {
-    this->keyCodeBuff = ' ';
-    this->keyCode = ' ';
-    this->scaned = 0;
-    
+    this->inputValue = 0;    
     this->scanKey = &scanKey;
-    this->asciiToVinaly = &asciiToVinaly;
 }
