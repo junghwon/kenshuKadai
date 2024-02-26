@@ -11,6 +11,7 @@ struct _view {
     funcMenuDisplay menuDisplay;
     funcSelectDisplay selectDisplay;
     funcInsertDisplay insertDisplay;
+    funcViewDisplay viewDisplay;
 };
 
 // --- groval function

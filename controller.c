@@ -35,6 +35,7 @@ static void menuMode (controller_t *this)
 
 static void viewMode (controller_t *this)
 {
+    this->view.viewDisplay (this->model.node);
     this->controllerMode = controllerMode_menu;
 }
 
@@ -44,7 +45,7 @@ static void insertMode (controller_t *this)
 
     if (this->keyController.scanKey (&this->keyController)) {
         this->controllerMode = controllerMode_menu;
-        this->model.createNode (&this->model);
+        this->model.insertNode (&this->model, this->keyController.inputValue);
     }
 }
 

@@ -1,9 +1,13 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-typedef struct _model model_t;
-typedef struct _node node_t;
+typedef struct {
+    int value; // データ
+    struct node_t *pPrev; // 前方のノードアドレス
+    struct node_t *pNext; // 後方のノードアドレス
+} node_t;
 
-typedef node_t (*funcCreateNode)(model_t *this);
+typedef struct _model model_t;
+typedef int (*funcInsertNode)(model_t *this, int value);
 
 #endif // MODEL_H

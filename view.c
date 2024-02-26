@@ -19,6 +19,11 @@ static void selectDisplay (int number)
     printf ("Input No = %d\n", number);
 }
 
+static void viewDisplay (node_t *node)
+{
+    printf ("value = %d\n", node->value);
+}
+
 static void insertDisplay (void)
 {
     printf ("Input value = ");
@@ -30,4 +35,5 @@ void view_Constructor (view_t *this)
     this->menuDisplay = &menuDisplay;
     this->selectDisplay = &selectDisplay;
     this->insertDisplay = &insertDisplay;
+    this->viewDisplay = &viewDisplay;
 }

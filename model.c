@@ -11,14 +11,26 @@ const node_t nodeInitialvalue = {
     NULL,
 };
 
-// --- method
-static node_t createNode (model_t *this)
+// --- static function
+static node_t *createNode (void)
 {
+    return ((node_t*)malloc (sizeof (node_t)));
+}
 
+// --- method
+static int insertNode (model_t *this, int value)
+{
+    this->node = createNode ();
+
+    this->node->value = nodeInitialvalue.value;
+    this->node->pPrev = nodeInitialvalue.pPrev;
+    this->node->pNext = nodeInitialvalue.pNext;
+
+    this->node->value = value;
 }
 
 // --- groval function
 void model_Constructor (model_t *this)
 {
-    this->createNode = &createNode;
+    this->insertNode = &insertNode;
 }

@@ -3,15 +3,11 @@
 
 #include "model.h"
 
-struct _node {
-    int value; // データ
-    struct node_t *pPrev; // 前方のノードアドレス
-    struct node_t *pNext; // 後方のノードアドレス
-};
-
 struct _model {
+    // field
+    node_t *node;
     // method
-    funcCreateNode createNode;
+    funcInsertNode insertNode;
 };
 
 // --- groval function
