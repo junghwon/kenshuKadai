@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
-#include <string.h>
-#include <pthread.h>
 #include "controllerClass.h"
 
 int main (int argc, char *argv[])

@@ -8,6 +8,6 @@ typedef struct {
 } node_t;
 
 typedef struct _model model_t;
-typedef int (*funcInsertNode)(model_t *this, int value);
+typedef void (*funcInsertNode)(model_t *this, int value);
 
 #endif // MODEL_H

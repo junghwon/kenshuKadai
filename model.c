@@ -18,7 +18,7 @@ static node_t *createNode (void)
 }
 
 // --- method
-static int insertNode (model_t *this, int value)
+static void insertNode (model_t *this, int value)
 {
     this->node = createNode ();
 
