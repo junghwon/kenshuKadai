@@ -8,7 +8,7 @@ OBJ = $(SRC:%.c=%.o)
 
 .PHONY: test
 test:
-	gcc $(SRC) -o $@  -lpthread 
+	gcc $(SRC) -o $@
 
 .PHONY: clean
 clean: $(OBJ)
