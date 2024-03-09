@@ -5,7 +5,8 @@
 
 struct _model {
     // field
-    node_t *node;
+    node_t *node[NODE_NUM];
+    int nodeNum;
     // method
     funcInsertNode insertNode;
 };

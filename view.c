@@ -3,6 +3,7 @@
 #include <stddef.h>
 #include <string.h>
 #include "viewClass.h"
+#include "model.h"
 
 // --- method
 static void menuDisplay (void)
@@ -21,7 +22,10 @@ static void selectDisplay (int number)
 
 static void viewDisplay (node_t *node)
 {
+    printf ("Node addr = %d\n", node);
     printf ("value = %d\n", node->value);
+    printf ("p_prev = %d\n", node->pPrev);
+    printf ("p_next = %d\n", node->pNext);
 }
 
 static void insertDisplay (void)

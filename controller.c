@@ -35,7 +35,8 @@ static void menuMode (controller_t *this)
 
 static void viewMode (controller_t *this)
 {
-    this->view.viewDisplay (this->model.node);
+    this->view.viewDisplay (this->model.node[0]);
+    this->view.viewDisplay (this->model.node[1]);
     this->controllerMode = controllerMode_menu;
 }
 
